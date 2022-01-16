@@ -24,12 +24,10 @@
 
   &:hover {
     .image {
-      transition: 0.2s ease-in;
       opacity: 0.8;
     }
 
     .custom-button {
-      transition: 0.2s ease-in;
       opacity: 0.85;
       display: flex;
     }
