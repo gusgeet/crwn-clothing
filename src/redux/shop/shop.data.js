@@ -8,7 +8,8 @@ const SHOP_DATA = {
         id: 1,
         name: 'Brown Brim',
         imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-        price: 25
+        price: 25,
+        hot: "yes"
       },
       {
         id: 2,
@@ -26,7 +27,8 @@ const SHOP_DATA = {
         id: 4,
         name: 'Grey Brim',
         imageUrl: 'https://i.ibb.co/RjBLWxB/grey-brim.png',
-        price: 25
+        price: 25,
+        hot: "yes"
       },
       {
         id: 5,

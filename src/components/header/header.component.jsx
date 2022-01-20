@@ -15,6 +15,7 @@ import './header.styles.scss';
 
 const Header = ({ currentUser, hidden }) => (
   <div className='header'>
+    
     <Link className='logo-container' to='/'>
       <Logo className='logo' />
     </Link>
@@ -34,6 +35,12 @@ const Header = ({ currentUser, hidden }) => (
           SIGN IN
         </Link>
       )}
+       <span>
+          {currentUser ? (
+          <div className='option-welcome'>WELCOME, {currentUser.displayName}</div>
+          ) :
+          (<div className='option-welcome'>WELCOME, GUEST</div>)}
+        </span>
       <CartIcon />
     </div>
     {hidden ? null : <CartDropdown />}
