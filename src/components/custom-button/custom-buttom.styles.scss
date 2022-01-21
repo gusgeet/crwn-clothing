@@ -11,7 +11,7 @@
   text-transform: uppercase;
   font-family: 'Open Sans Condensed';
   font-weight: bolder;
-  border: none;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -20,6 +20,14 @@
     background-color: white;
     color: black;
     border: 1px solid black;
+    transition: 0.5s;
+  }
+
+  &:not(:hover){
+    background-color: black;
+    color: white; 
+    border: 1px solid black;
+    transition: 0.5s;
   }
 
   &.google-sign-in {

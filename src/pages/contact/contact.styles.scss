@@ -1,0 +1,18 @@
+.contact-page {
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
+  
+    .contact-title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .sign-up-form {
+      width: 50vw;      
+    }
+}
+

@@ -13,12 +13,19 @@
     cursor: pointer;
 
     & .background-image {
-      transform: scale(1.1);
-      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      transform: scale(1.5);
+      transition: transform 1.5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
     & .content {
       opacity: 0.9;
+    }
+  }
+
+  &:not(:hover) {
+    & .background-image {
+      transform: scale(1.0);
+      transition: transform 1.5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
   }
 
