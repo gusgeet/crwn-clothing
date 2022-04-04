@@ -4,7 +4,6 @@ import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router-dom';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import {
