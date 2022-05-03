@@ -40,8 +40,9 @@ const SignInForm = () => {
             const {user} = await signInAuthUserWithEmailAndPassword(
                 email, 
                 password);
-            
+                navigate("/");
             resetFormFields();
+            
             
         } catch (error) {
             switch (error.code){
@@ -49,7 +50,7 @@ const SignInForm = () => {
                     alert('incorrect password or email');
                     break
                 case 'auth/user-not-found':
-                    alert('no user associated with this email');
+                    alert('no user has been found with those credentials');
                     break
                 default:
                     console.log(error.code)

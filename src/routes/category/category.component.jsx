@@ -6,7 +6,9 @@ import ProductCard from '../../components/product-card/product-card.component';
 
 import { selectCategoriesMap } from '../../store/categories/category.selector';
 
-import { CategoryContainer, Title } from './category.styles';
+import { CategoryContainer, Title, SubTitle } from './category.styles';
+
+import { useNavigate } from 'react-router-dom';
 
 const Category = () => {
   const { category } = useParams();
@@ -16,9 +18,16 @@ const Category = () => {
   useEffect(() => {
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
+ 
+  const navigate = useNavigate();
+
+  const onBackClick = () => {
+    navigate(-1);
+  }
 
   return (
     <Fragment>
+      <SubTitle onClick={onBackClick}>&#10094;</SubTitle>
       <Title>{category.toUpperCase()}</Title>
       <CategoryContainer>
         {products &&

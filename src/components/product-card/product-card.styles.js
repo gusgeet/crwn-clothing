@@ -19,6 +19,14 @@ export const ProductCartContainer = styled.div`
     position: absolute;
     top: 255px;
     display: none;
+
+    @media screen and (max-width: 800px) {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px 0 10px;
+      margin: 0 auto;
+    }
   }
   &:hover {
     img {
@@ -27,6 +35,21 @@ export const ProductCartContainer = styled.div`
     button {
       opacity: 0.85;
       display: flex;
+    }
+  }
+
+  
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+
+    &:hover {
+      img {
+        opacity: unset;
+      }
+      button {
+        opacity: unset;
+      }
     }
   }
 `;
