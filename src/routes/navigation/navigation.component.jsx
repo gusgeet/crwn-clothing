@@ -25,6 +25,7 @@ const Navigation = () => {
                     <CrwnLogo className="logo"/>
                 </LogoContainer>
                 <NavLinks>
+                    {currentUser && <span>WELCOME {currentUser.displayName}</span>}
                     <NavLink to='/shop'>
                         SHOP
                     </NavLink>

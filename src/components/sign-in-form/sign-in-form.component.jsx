@@ -8,6 +8,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { SignUpContainer, ButtonsContainer } from './sign-in-form.styles';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +20,7 @@ const defaultformFields = {
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultformFields);
     const { email, password } = formFields;
+    const navigate = useNavigate();
 
     const resetFormFields = () => {
         setFormFields(defaultformFields)
@@ -27,6 +29,7 @@ const SignInForm = () => {
     
     const signInWithGoogle = async () =>{
         await signInWithGooglePopup();
+        navigate("/");
 
     }   
 
@@ -37,7 +40,9 @@ const SignInForm = () => {
             const {user} = await signInAuthUserWithEmailAndPassword(
                 email, 
                 password);
+            
             resetFormFields();
+            
         } catch (error) {
             switch (error.code){
                 case 'auth/wrong-password':
