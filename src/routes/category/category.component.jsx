@@ -38,16 +38,16 @@ const Category = () => {
     <Fragment>
       <SubTitle onClick={onBackClick}>&#10094;</SubTitle>
       <Title>{category.toUpperCase()}</Title>
-      {isLoading ? ( <Spinner /> )
-        : (
+      {isLoading ? ( 
+        <Spinner /> 
+        ) : (
           <CategoryContainer>
-          {products &&
-            products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {products &&
+              products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
         </CategoryContainer>
-        )
-      }
+        )}
     </Fragment>
   );
 };
