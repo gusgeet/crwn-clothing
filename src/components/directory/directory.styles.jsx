@@ -6,4 +6,9 @@ export const DirectoryContainer = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 
+    @media screen and (max-width: 700px) {
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
 `

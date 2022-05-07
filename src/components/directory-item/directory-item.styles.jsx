@@ -6,8 +6,6 @@ export const BackgroundImage = styled.div`
   background-size: cover;
   background-position: center;
   background-image: ${({imageUrl}) => `url(${imageUrl})`};
-
-
 `
 
 export const Body = styled.div`
@@ -34,7 +32,6 @@ export const Body = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
-
 `
 
 export const DirectoryItemContainer = styled.div`
