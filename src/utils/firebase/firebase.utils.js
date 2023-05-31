@@ -1,4 +1,3 @@
-import { initializeApp } from 'firebase/app';
 import { 
     getAuth, 
     signInWithRedirect, 
@@ -22,17 +21,6 @@ import {
 } from 'firebase/firestore'
 
 
-const firebaseConfig = {
-
-    apiKey: "AIzaSyCKz3BwF0zzDgJGSl7AjGspI36DlJdIvMc",
-    authDomain: "crown-store-netlify.firebaseapp.com",
-    projectId: "crown-store-netlify",
-    storageBucket: "crown-store-netlify.appspot.com",
-    messagingSenderId: "30210816939",
-    appId: "1:30210816939:web:de245f4015206f8f4cf0ee"
-  };
-  
-const firebaseApp = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
 

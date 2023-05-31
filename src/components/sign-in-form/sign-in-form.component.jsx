@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { 
     signInWithGooglePopup,
-    signInAuthUserWithEmailAndPassword } 
+    // signInAuthUserWithEmailAndPassword 
+    } 
     from "../../utils/firebase/firebase.utils";
 
 import FormInput from "../form-input/form-input.component";
@@ -22,9 +23,9 @@ const SignInForm = () => {
     const { email, password } = formFields;
     const navigate = useNavigate();
 
-    const resetFormFields = () => {
-        setFormFields(defaultformFields)
-    }
+    // const resetFormFields = () => {
+    //     setFormFields(defaultformFields)
+    // }
 
     
     const signInWithGoogle = async () =>{
@@ -36,26 +37,26 @@ const SignInForm = () => {
     const handleSubmit = async (event)  => {
         event.preventDefault();
 
-        try {
-            const {user} = await signInAuthUserWithEmailAndPassword(
-                email, 
-                password);
-                navigate("/");
-            resetFormFields();
+        // try {
+        //     const {user} = await signInAuthUserWithEmailAndPassword(
+        //         email, 
+        //         password);
+        //         navigate("/");
+        //     resetFormFields();
             
             
-        } catch (error) {
-            switch (error.code){
-                case 'auth/wrong-password':
-                    alert('incorrect password or email');
-                    break
-                case 'auth/user-not-found':
-                    alert('no user has been found with those credentials');
-                    break
-                default:
-                    console.log(error.code)
-            }
-        }
+        // } catch (error) {
+        //     switch (error.code){
+        //         case 'auth/wrong-password':
+        //             alert('incorrect password or email');
+        //             break
+        //         case 'auth/user-not-found':
+        //             alert('no user has been found with those credentials');
+        //             break
+        //         default:
+        //             console.log(error.code)
+        //     }
+        // }
 
         
 
