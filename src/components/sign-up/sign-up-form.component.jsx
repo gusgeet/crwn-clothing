@@ -13,11 +13,12 @@ const defaultformFields = {
     email: '',
     password: '',
     confirmPassword: '',
+    admin: false
 }
 
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultformFields);
-    const { displayName, email, password, confirmPassword } = formFields;
+    const { displayName, email, password, confirmPassword, admin } = formFields;
 
 
     const resetFormFields = () => {
@@ -34,7 +35,10 @@ const SignUpForm = () => {
         try {
             const { user } = await createAuthUserWithEmailAndPassword(
                 email, 
-                password);
+                password,
+                admin).then(registered => {
+                    console.log(registered)
+                });
 
             await createUserDocumentFromAuth(user, {displayName});
             resetFormFields();
@@ -59,11 +63,11 @@ const SignUpForm = () => {
 
     return (
         <SignUpContainer>
-            <h2>Don't have an account?</h2>
-            <span>Sign up with your email and password</span>
+            <h2>No tenés una cuenta?</h2>
+            <span>Registrate ingresando un email y una contraseña</span>
             <form onSubmit={handleSubmit}>
                 <FormInput
-                    label="Display Name"
+                    label="Nombre de muestra"
                     type="text" 
                     required 
                     onChange={handleChange} 
@@ -84,13 +88,13 @@ const SignUpForm = () => {
                     name="password" 
                     value={password}/>
                 <FormInput 
-                    label="Confirm Password"
+                    label="Confirmar Password"
                     type="password" 
                     required 
                     onChange={handleChange} 
                     name="confirmPassword" 
                     value={confirmPassword}/>
-                <Button type="submit">Sign up</Button>
+                <Button type="submit">Registrarse</Button>
             </form>
         </SignUpContainer>
     )

@@ -22,21 +22,22 @@ const Navigation = () => {
         <Fragment>
             <NavigationContainer>
                 <LogoContainer to='/'>
-                    <CrwnLogo className="logo"/>
+                    <CrwnLogo className="logo"/>  
                 </LogoContainer>
                 <NavLinks>
-                    {currentUser && <span>WELCOME {currentUser.displayName}</span>}
+                    {currentUser && <span>Qué gusto que vengas, {currentUser.displayName.split(' ')[0]}</span>}
+                    {!currentUser.admin && <span>Es admin</span>}
                     <NavLink to='/shop'>
-                        SHOP
+                        COMPRAR
                     </NavLink>
                         {currentUser ? (
                             <NavLink as='span' onClick={signOutUser}>
                                 {' '}
-                                SIGN OUT {' '}
+                                Salir {' '}
                             </NavLink>
                         ) : (
                             <NavLink to='/auth'>
-                                SIGN IN
+                                Ingresar
                             </NavLink>
                         )}
                         <CartIcon />

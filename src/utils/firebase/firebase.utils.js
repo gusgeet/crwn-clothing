@@ -23,7 +23,6 @@ import {
 
 
 const firebaseConfig = {
-
     apiKey: "AIzaSyCKz3BwF0zzDgJGSl7AjGspI36DlJdIvMc",
     authDomain: "crown-store-netlify.firebaseapp.com",
     projectId: "crown-store-netlify",
@@ -43,6 +42,7 @@ provider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () => 
     signInWithPopup(auth, provider);
+
 export const signInWithGoogleRedirect = () => 
     signInWithRedirect(auth, provider);
 
@@ -63,14 +63,26 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
 export const getCategoriesAndDocuments = async () => {
     const collectionRef = collection(db, 'categories');
+    const users = collection(db, 'users')
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
-       
-
     // return categoryMap;
+}
 
+export const getUsersAndGetAdmin = async (email) => {
+    const collectionRef = collection(db, 'categories');
+    const users = collection(db, 'users')
+    const q = query(users);
+
+    const querySnapshot = await getDocs(q);
+    let usersFromDB = await querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+    if(usersFromDB) {
+        let user = usersFromDB.find(x => x.email === email)
+        return user
+    }
+    return;
 }
 
 

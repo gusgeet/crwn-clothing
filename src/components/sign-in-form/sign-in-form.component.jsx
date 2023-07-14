@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import { 
     signInWithGooglePopup,
-    // signInAuthUserWithEmailAndPassword 
+    signInAuthUserWithEmailAndPassword, 
+    //getCategoriesAndDocuments,
+    getUsersAndGetAdmin
     } 
     from "../../utils/firebase/firebase.utils";
 
@@ -23,59 +25,57 @@ const SignInForm = () => {
     const { email, password } = formFields;
     const navigate = useNavigate();
 
-    // const resetFormFields = () => {
-    //     setFormFields(defaultformFields)
-    // }
+    const resetFormFields = () => {
+        setFormFields(defaultformFields)
+    }
 
     
     const signInWithGoogle = async () =>{
-        await signInWithGooglePopup();
+        const res = await signInWithGooglePopup();
         navigate("/");
-
+        if(res.user){
+            let userAdmin = await getUsersAndGetAdmin(res.user.email)
+        }
     }   
 
     const handleSubmit = async (event)  => {
         event.preventDefault();
 
-        // try {
-        //     const {user} = await signInAuthUserWithEmailAndPassword(
-        //         email, 
-        //         password);
-        //         navigate("/");
-        //     resetFormFields();
-            
-            
-        // } catch (error) {
-        //     switch (error.code){
-        //         case 'auth/wrong-password':
-        //             alert('incorrect password or email');
-        //             break
-        //         case 'auth/user-not-found':
-        //             alert('no user has been found with those credentials');
-        //             break
-        //         default:
-        //             console.log(error.code)
-        //     }
-        // }
+        try {
+            const {user} = await signInAuthUserWithEmailAndPassword(
+                email, 
+                password);
+                
+            navigate("/");
+            resetFormFields();
+                        
 
-        
-
+        } catch (error) {
+            switch (error.code){
+                case 'auth/wrong-password':
+                    alert('incorrect password or email');
+                    break
+                case 'auth/user-not-found':
+                    alert('no user has been found with those credentials');
+                    break
+                default:
+                    console.log(error.code)
+            }
+        }
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormFields({...formFields, [name]: value })
-    }
-
-    
+    }   
 
     return (
         <SignUpContainer>
-            <h2>Already have an account?</h2>
-            <span>Sign in with your email and password</span>
+            <h2>Ya tenes una cuenta?</h2>
+            <span>Ingresá con tu usuario y password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
-                    label="Email"
+                    label="Usuario"
                     type="email" 
                     required 
                     onChange={handleChange} 
@@ -89,8 +89,8 @@ const SignInForm = () => {
                     name="password" 
                     value={password}/>
                 <ButtonsContainer>
-                    <Button type="submit">Sign in</Button>
-                    <Button buttonType={BUTTON_TYPE_CLASSES.google} type="button" onClick={signInWithGoogle} >Sign in with Google</Button>
+                    <Button type="submit">Ingresar</Button>
+                    <Button buttonType={BUTTON_TYPE_CLASSES.google} type="button" onClick={signInWithGoogle} >Ingresar con Google</Button>
                 </ButtonsContainer>
             </form>
         </SignUpContainer>

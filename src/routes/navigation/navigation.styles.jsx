@@ -32,6 +32,7 @@ export const NavLinks = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 10px;
 
   @media screen and (max-width: 800px) {
     width: 80%;
@@ -41,4 +42,11 @@ export const NavLinks = styled.div`
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+  transition: border-bottom 0.6s;
+  border-bottom: 3px solid transparent;
+
+  &&:hover {
+    border-bottom: 3px solid red;
+  }
+
 `
