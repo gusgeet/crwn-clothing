@@ -6,7 +6,7 @@ import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
-import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectAdminUser, selectCurrentUser } from "../../store/user/user.selector";
 
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -15,6 +15,8 @@ import {NavigationContainer, NavLink, LogoContainer, NavLinks} from './navigatio
 
 const Navigation = () => {
     const currentUser = useSelector(selectCurrentUser);
+    const adminUser = useSelector(selectAdminUser);
+
     // const { isCartOpen } = useContext(CartContext);
     
     const isCartOpen = useSelector(selectIsCartOpen)
@@ -25,19 +27,18 @@ const Navigation = () => {
                     <CrwnLogo className="logo"/>  
                 </LogoContainer>
                 <NavLinks>
-                    {currentUser && <span>Qué gusto que vengas, {currentUser.displayName.split(' ')[0]}</span>}
-                    {!currentUser.admin && <span>Es admin</span>}
+                    {adminUser?.admin && <NavLink to='/panelAdmin'>Panel Admin</NavLink> }
                     <NavLink to='/shop'>
                         COMPRAR
                     </NavLink>
                         {currentUser ? (
                             <NavLink as='span' onClick={signOutUser}>
                                 {' '}
-                                Salir {' '}
+                                SALIR {' '}
                             </NavLink>
                         ) : (
                             <NavLink to='/auth'>
-                                Ingresar
+                                INGRESAR
                             </NavLink>
                         )}
                         <CartIcon />

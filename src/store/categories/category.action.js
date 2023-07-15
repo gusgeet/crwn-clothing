@@ -1,6 +1,6 @@
 import { CATEGORIES_ACTION_TYPES} from './category.type' ;
 import { createAction } from '../../utils/reducer/reducer.utils';
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+import { getCategoriesAndDocuments, getUsersAndGetAdmin } from '../../utils/firebase/firebase.utils';
 
 export const setCategories = (categoriesArray) =>
   createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, categoriesArray);
@@ -23,5 +23,5 @@ export const fetchCategoriesAsync = () => async (dispatch) => {
   } catch (error){
     dispatch(fetchCategoriesFail(error));
   }
-  
 } 
+

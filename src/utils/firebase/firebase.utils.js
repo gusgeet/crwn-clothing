@@ -78,11 +78,14 @@ export const getUsersAndGetAdmin = async (email) => {
 
     const querySnapshot = await getDocs(q);
     let usersFromDB = await querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+    console.log(usersFromDB)
     if(usersFromDB) {
         let user = usersFromDB.find(x => x.email === email)
-        return user
+        console.log(user)
+        if (user && user.admin) 
+            return user
     }
-    return;
+    return null;
 }
 
 

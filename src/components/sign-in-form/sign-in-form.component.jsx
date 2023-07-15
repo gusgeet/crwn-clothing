@@ -31,11 +31,8 @@ const SignInForm = () => {
 
     
     const signInWithGoogle = async () =>{
-        const res = await signInWithGooglePopup();
+        await signInWithGooglePopup();
         navigate("/");
-        if(res.user){
-            let userAdmin = await getUsersAndGetAdmin(res.user.email)
-        }
     }   
 
     const handleSubmit = async (event)  => {
@@ -45,18 +42,19 @@ const SignInForm = () => {
             const {user} = await signInAuthUserWithEmailAndPassword(
                 email, 
                 password);
-                
             navigate("/");
             resetFormFields();
-                        
-
         } catch (error) {
+            console.log(error)
             switch (error.code){
                 case 'auth/wrong-password':
                     alert('incorrect password or email');
                     break
                 case 'auth/user-not-found':
                     alert('no user has been found with those credentials');
+                    break
+                case 'auth/user-disabled':
+                    alert('user not allowed. go fuck yourself');
                     break
                 default:
                     console.log(error.code)
