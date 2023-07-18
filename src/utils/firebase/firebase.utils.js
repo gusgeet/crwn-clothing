@@ -63,7 +63,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
 export const getCategoriesAndDocuments = async () => {
     const collectionRef = collection(db, 'categories');
-    const users = collection(db, 'users')
+    //const users = collection(db, 'users')
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
@@ -72,7 +72,7 @@ export const getCategoriesAndDocuments = async () => {
 }
 
 export const getUsersAndGetAdmin = async (email) => {
-    const collectionRef = collection(db, 'categories');
+    //const collectionRef = collection(db, 'categories');
     const users = collection(db, 'users')
     const q = query(users);
 
