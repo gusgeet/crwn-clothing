@@ -25,10 +25,17 @@ export const Span = styled.span`
 `
 export const SpanQty = styled(Span)`
   display: flex;
-
 `
+export const SpanNumber = styled.span`
+  margin: 0 auto;
+`
+
 export const Arrow = styled.div`
   cursor: pointer;
+  text-align:center;
+  font-weight: 800;
+  font-size: 35px;
+  user-select: none;
   
   :first-child:hover {
     color: red;

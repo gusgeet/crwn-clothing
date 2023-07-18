@@ -27,7 +27,7 @@ const Navigation = () => {
                     <CrwnLogo className="logo"/>  
                 </LogoContainer>
                 <NavLinks>
-                    {adminUser?.admin && <NavLink to='/panelAdmin'>Panel Admin</NavLink> }
+                    {adminUser?.admin && <NavLink to='/panelAdmin'>PANEL ADMIN</NavLink> }
                     <NavLink to='/shop'>
                         COMPRAR
                     </NavLink>

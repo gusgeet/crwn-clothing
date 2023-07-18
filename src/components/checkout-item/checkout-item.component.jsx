@@ -1,4 +1,4 @@
-import { CheckOutItemContainer, ImageContainer, Span, SpanQty, Value, Arrow, RemoveButton } from './checkout-item.styles';
+import { CheckOutItemContainer, ImageContainer, Span, SpanQty, SpanNumber, Value, Arrow, RemoveButton } from './checkout-item.styles';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -25,9 +25,9 @@ const CheckoutItem = ({cartItem}) => {
         </ImageContainer>
         <Span>{name}</Span>
         <SpanQty> 
-            <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
+            <Arrow onClick={removeItemHandler}>-</Arrow>
                 <Value> {quantity} </Value>
-            <Arrow onClick={addItemHandler}>&#10095;</Arrow>
+            <Arrow onClick={addItemHandler}><SpanNumber>+</SpanNumber></Arrow>
         </SpanQty>
         <Span>${price * quantity}</Span>
         <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>

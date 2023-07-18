@@ -4,7 +4,7 @@ import {
     signInWithGooglePopup,
     signInAuthUserWithEmailAndPassword, 
     //getCategoriesAndDocuments,
-    getUsersAndGetAdmin
+    //getUsersAndGetAdmin
     } 
     from "../../utils/firebase/firebase.utils";
 
@@ -39,7 +39,7 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            const {user} = await signInAuthUserWithEmailAndPassword(
+            await signInAuthUserWithEmailAndPassword(
                 email, 
                 password);
             navigate("/");
