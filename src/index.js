@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
@@ -11,11 +11,7 @@ import { stripePromise } from './utils/stripe/stripe.utils';
 
 import './index.scss';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
-
-root.render(
+ReactDOM.render(
   <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
@@ -24,5 +20,6 @@ root.render(
           </Elements>
         </BrowserRouter>
       </PersistGate>
-    </Provider>
+    </Provider>,
+    document.getElementById('root')
 );
